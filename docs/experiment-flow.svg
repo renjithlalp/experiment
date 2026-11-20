@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="30" y="40" font-size="22" font-weight="600" fill="#0f172a">IDRP-30326 · Experiment configuration and test/control split</text>
+
+  <!-- Row 1: configuration -->
+  <text x="30" y="75" font-size="14" font-weight="600" fill="#334155">1 · Configure (Draft only — every save creates a new version)</text>
+  <g font-size="14" fill="#0f172a" text-anchor="middle">
+    <rect x="30" y="90" width="200" height="70" rx="10" fill="#e0ecff" stroke="#3b6fd8"/>
+    <text x="130" y="120" font-weight="600">Experiment details</text>
+    <text x="130" y="140" font-size="12">name · start/end · type · priority</text>
+
+    <rect x="260" y="90" width="200" height="70" rx="10" fill="#e0ecff" stroke="#3b6fd8"/>
+    <text x="360" y="120" font-weight="600">Test / control split</text>
+    <text x="360" y="140" font-size="12">e.g. 90 / 10</text>
+
+    <rect x="490" y="90" width="200" height="70" rx="10" fill="#e0ecff" stroke="#3b6fd8"/>
+    <text x="590" y="120" font-weight="600">Bucketing identifier</text>
+    <text x="590" y="140" font-size="12">primary + fallback order</text>
+
+    <rect x="720" y="90" width="200" height="70" rx="10" fill="#e0ecff" stroke="#3b6fd8"/>
+    <text x="820" y="120" font-weight="600">Pricing treatment</text>
+    <text x="820" y="140" font-size="12">discount/markup/flat · floor/ceiling</text>
+
+    <rect x="950" y="90" width="200" height="70" rx="10" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="1050" y="120" font-weight="600">Publish</text>
+    <text x="1050" y="140" font-size="12">full validation → Scheduled</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" marker-end="url(#a)">
+    <line x1="230" y1="125" x2="258" y2="125"/>
+    <line x1="460" y1="125" x2="488" y2="125"/>
+    <line x1="690" y1="125" x2="718" y2="125"/>
+    <line x1="920" y1="125" x2="948" y2="125"/>
+  </g>
+  <g font-size="11.5" fill="#b91c1c" text-anchor="middle">
+    <text x="130" y="182">all mandatory · end &gt; start</text>
+    <text x="130" y="198">only type PRICING</text>
+    <text x="360" y="182">test + control = 100</text>
+    <text x="360" y="198">control &gt; 0, cannot be removed</text>
+    <text x="590" y="182">one primary</text>
+    <text x="590" y="198">fallback: no duplicates / no primary</text>
+    <text x="820" y="182">floor &lt; ceiling · flat rate in range</text>
+    <text x="820" y="198">products &amp; fare brands in catalogue</text>
+    <text x="1050" y="182">split + identifier + treatment</text>
+    <text x="1050" y="198">present · end in the future</text>
+  </g>
+  <text x="30" y="222" font-size="12" fill="#64748b">Any failure → 400 with every failing field; nothing is saved and no version is created.</text>
+
+  <!-- Row 2: lifecycle -->
+  <text x="30" y="258" font-size="14" font-weight="600" fill="#334155">2 · Lifecycle (only valid moves; every move recorded with user and time)</text>
+  <g font-size="15" font-weight="600" text-anchor="middle" fill="#0f172a">
+    <rect x="40" y="320" width="160" height="56" rx="28" fill="#f1f5f9" stroke="#64748b"/>
+    <text x="120" y="353">Draft</text>
+    <rect x="300" y="320" width="160" height="56" rx="28" fill="#fef9c3" stroke="#ca8a04"/>
+    <text x="380" y="353">Scheduled</text>
+    <rect x="580" y="320" width="160" height="56" rx="28" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="660" y="353">Running</text>
+    <rect x="580" y="470" width="160" height="56" rx="28" fill="#ffedd5" stroke="#ea580c"/>
+    <text x="660" y="503">Paused</text>
+    <rect x="900" y="320" width="160" height="56" rx="28" fill="#e2e8f0" stroke="#334155"/>
+    <text x="980" y="353">Ended</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#a)">
+    <line x1="200" y1="340" x2="298" y2="340"/>
+    <line x1="300" y1="360" x2="202" y2="360"/>
+    <line x1="460" y1="348" x2="578" y2="348"/>
+    <line x1="640" y1="376" x2="640" y2="468"/>
+    <line x1="680" y1="470" x2="680" y2="378"/>
+    <line x1="740" y1="348" x2="898" y2="348"/>
+    <path d="M740,498 L980,498 L980,378"/>
+    <path d="M380,320 C380,272 980,272 980,318"/>
+    <path d="M95,376 C70,430 170,430 145,378"/>
+  </g>
+  <g font-size="12" fill="#334155">
+    <text x="250" y="332" text-anchor="middle">publish</text>
+    <text x="250" y="378" text-anchor="middle">unpublish</text>
+    <text x="519" y="340" text-anchor="middle">start time</text>
+    <text x="519" y="368" text-anchor="middle">(system)</text>
+    <text x="632" y="428" text-anchor="end">pause</text>
+    <text x="690" y="428">resume</text>
+    <text x="820" y="340" text-anchor="middle">end / end time</text>
+    <text x="860" y="515" text-anchor="middle">end / end time</text>
+    <text x="680" y="282" text-anchor="middle">end (cancel before start)</text>
+    <text x="120" y="446" text-anchor="middle">edit → new version</text>
+  </g>
+  <g font-size="11.5" fill="#64748b">
+    <text x="760" y="460">excluded from bucketing feed →</text>
+    <text x="760" y="476">all traffic gets the default</text>
+    <text x="1070" y="345">read-only</text>
+  </g>
+
+  <!-- Row 3: guarantees -->
+  <text x="30" y="580" font-size="14" font-weight="600" fill="#334155">3 · Guarantees</text>
+  <g font-size="12.5" fill="#0f172a">
+    <rect x="30" y="595" width="360" height="140" rx="10" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="48" y="621" font-weight="600" font-size="14">Running lock</text>
+    <text x="48" y="645">Running / Paused: only pause, resume, end.</text>
+    <text x="48" y="666">Any edit → 409 EXPERIMENT_LOCKED with reason.</text>
+    <text x="48" y="687">Scheduled: unpublish to Draft before editing.</text>
+    <text x="48" y="708">Different setup needed → end it, create a new one.</text>
+
+    <rect x="420" y="595" width="360" height="140" rx="10" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="438" y="621" font-weight="600" font-size="14">Versions and audit</text>
+    <text x="438" y="645">Append-only versions 1, 2, 3 … never overwritten.</text>
+    <text x="438" y="666">Each: who, when, state, changed fields, snapshot.</text>
+    <text x="438" y="687">configVersion moves only when settings change.</text>
+    <text x="438" y="708">If-Match: version → 409 on concurrent edits.</text>
+
+    <rect x="810" y="595" width="360" height="140" rx="10" fill="#f0fdf4" stroke="#16a34a"/>
+    <text x="828" y="621" font-weight="600" font-size="14">Hand-off and traceability</text>
+    <text x="828" y="645">GET /bucketing/active: Running only, by priority.</text>
+    <text x="828" y="666">Carries id, configVersion, split, identifier +</text>
+    <text x="828" y="687">fallback, treatment → stamped on traffic.</text>
+    <text x="828" y="708">GET /experiments/{id}/served?at= → live version.</text>
+  </g>
+</svg>
